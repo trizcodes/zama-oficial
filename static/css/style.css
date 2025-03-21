@@ -1,0 +1,210 @@
+:root {
+    --primary: #0d47a1;
+    --accent: #ffc107;
+    --gray: #808080;
+    --bg: #f7f9fc;
+    --font: 'Poppins', sans-serif;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Header */
+  header {
+    background: linear-gradient(90deg, var(--primary), #1976d2);
+    color: #fff;
+    padding: 25px 15px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  }
+  
+  .header-content {
+    margin-bottom: 10px;
+  }
+  
+  header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  header h1 i {
+    font-size: 2.4rem;
+    color: var(--accent);
+  }
+  
+  .tagline {
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
+  
+  .header-description {
+    font-size: 0.95rem;
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+  
+  nav {
+    margin-top: 10px;
+  }
+  
+  nav button {
+    background: var(--accent);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  nav button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  }
+  
+  /* Container e Grid Layout */
+  .container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+  
+  .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .grid-item.map-section {
+    flex: 2 1 60%;
+  }
+  
+  .grid-item.sidebar {
+    flex: 1 1 35%;
+  }
+  
+  @media (max-width: 768px) {
+    .grid-container {
+      flex-direction: column;
+    }
+    .grid-item {
+      flex: 1 1 100%;
+    }
+  }
+  
+  /* Cards */
+  .card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+  
+  .card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 5px;
+  }
+  
+  /* Feed Rolável de Notícias */
+  .scrollable-feed {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+  
+  /* Mapa */
+  #map {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+  }
+  
+  /* Inputs */
+  .filter-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  /* Report Items */
+  .report-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    font-size: 0.95rem;
+  }
+  
+  .report-item:last-child {
+    border-bottom: none;
+  }
+  
+  .report-item strong {
+    color: var(--primary);
+  }
+
+  #amazonasNews a {
+    color: #808080; /* Cinza */
+    text-decoration: none;
+  }
+
+  #amazonasNews p {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+  }
+  
+  
+  #amazonasNews a:visited {
+    color: #808080; /* Permanece cinza após visita */
+  }
+  
+  #amazonasNews a:hover,
+  #amazonasNews a:focus,
+  #amazonasNews a:active {
+    color: #0d47a1; /* Azul escuro ao interagir */
+    text-decoration: underline;
+  }
+
+
+  .pagination .page-link {
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  .pagination .page-link.active {
+    font-weight: bold;
+  }
+  
+  
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    padding: 15px 0;
+    border-top: 1px solid #ddd;
+    margin-top: 30px;
+    background: #fff;
+  }
+  

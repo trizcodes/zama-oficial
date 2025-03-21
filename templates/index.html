@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZAMA - Zona de Aviso Manaus</title>
+  <!-- Fonte Google: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- CSS do Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="static/css/style.css">
+  <!-- Ícones (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1><i class="fas fa-bolt"></i>ZAMA</h1>
+      <p class="tagline">Zona de Aviso - Manaus</p>
+      <p class="header-description">
+        Monitoramento em tempo real dos bairros sem energia em Manaus – integrando dados oficiais, previsões e relatos dos moradores
+      </p>
+    </div>
+    <nav>
+      <button onclick="checkPowerStatus()">Visualizar status de energia</button>
+      <button onclick="reportOutage()">Reportar que está sem luz</button>
+      <!-- Botão para notificação sobre possíveis quedas de luz -->
+      <!-- No seu HTML, certifique-se de ter o botão: -->
+      <button onclick="notifyDevelopment()" style="cursor: pointer;">Notificar sobre possíveis quedas de luz</button>
+    </nav>
+  </header>
+  <main class="container">
+    <div class="grid-container">
+      <!-- Coluna Esquerda: Mapa e Notícias -->
+      <div class="grid-item map-section">
+        <section class="card">
+          <h2>Mapa de Energia</h2>
+          <div id="map"></div>
+        </section>
+        <section class="card">
+          <h2>Notícias da Amazonas Energia</h2>
+          <div id="amazonasNews" class="scrollable-feed">
+            <p>Carregando notícias...</p>
+          </div>
+        </section>
+      </div>
+      <!-- Coluna Direita: Status e Relatos -->
+      <div class="grid-item sidebar">
+        <section class="card" id="regionStatus">
+          <h2>Status da Sua Região</h2>
+          <div id="statusMessage">
+            <p style="font-size: 1.1rem;">
+              Para verificar a situação da energia no seu bairro, clique em 
+              <strong style="cursor:pointer;" onclick="checkPowerStatus()">
+                Visualizar status de energia
+              </strong>. Ao permitir o acesso à sua localização, identificaremos o seu bairro e informaremos se a energia está normal ou se há relatos recentes de apagões na região. Assim, você ficará sempre atualizado sobre a situação
+            </p>
+          </div>
+        </section>        
+        <section class="card" id="reportsSection">
+          <h2>Relatos de Apagões <small>(Hoje: <span id="todayDate"></span>)</small></h2>
+          <input type="text" id="neighborhoodFilter" class="filter-input" placeholder="Pesquisar por bairro" oninput="updateReports()">
+          <div id="reportsFeed">
+            <p>Nenhum relato registrado para hoje</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer>
+    © 2025 ZAMA - Zona de Aviso Manaus. Criado por TrizCodes. Saiba mais em <a href="https://trizcodes.netlify.app/" target="_blank" rel="noopener noreferrer">trizcodes.netlify.app</a>
+  </footer>  
+  
+  <!-- vlibras (se necessário) -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Script personalizado -->
+  <script src="static/js/script.js"></script>
+</body>
+</html>
