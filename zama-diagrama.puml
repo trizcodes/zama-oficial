@@ -1,0 +1,43 @@
+@startuml
+
+title "Diagrama Geral - Projeto 'ZAMA – Zona de Aviso Manaus' (Flask + Render + Twilio)"
+
+actor "Usuário" as User
+
+cloud "Render Cloud" as Render {
+  
+  node "Flask App (ZaMA)" as flaskApp {
+    
+    component "Módulo Principal\n(app.py)" as mainApp
+    component "Scraper de Notícias\n(Captura de dados oficiais de energia)" as scraper
+    component "Map Visualization\n(Mapa Interativo)" as map
+    component "Twilio Integration\n(Envio de SMS)" as twilioIntegration
+    component "Verificação de Localização\n(Requer permissão de localização)" as geoCheck
+    
+  }
+  
+  database "Banco de Dados" as DB {
+    component "• Informações de Falhas\n• Registros de Reportações de Energia\n• Usuários/Logs" as schema
+  }
+}
+
+' Relações/Interações
+User --> mainApp : Acessa via Navegador (HTTPS)
+mainApp --> geoCheck : Solicita e verifica\nlocalização do usuário
+geoCheck --> mainApp : Retorno da verificação\n(Manaus ou fora de Manaus)
+
+' Se for Manaus
+mainApp --> map : Renderiza/Exibe mapa interativo
+mainApp --> twilioIntegration : Dispara SMS\nem caso de alertas
+mainApp --> scraper : Solicita dados atualizados\nde notícias ou APIs oficiais
+scraper --> DB : Armazena/Ajusta dados coletados
+mainApp --> DB : CRUD (usuários, quedas, etc.)
+
+' Nota para indicar que, fora de Manaus, o sistema bloqueia
+note right of mainApp
+  Caso o usuário NÃO esteja em Manaus:
+  - Bloqueia funcionalidades
+  - Exibe mensagem de "indisponível na sua região"
+end note
+
+@enduml
